@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BankAccount.h"
 
-@interface MobileAppAssignmentOneViewController : UIViewController
+@interface MobileAppAssignmentOneViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) BankAccount *account;
 @property (strong, nonatomic) IBOutlet UITextField *textField;

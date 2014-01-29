@@ -28,8 +28,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    // for some reason this does not display my transation list
-    self.transactionTextView.text = self.account.transactionList.description;
+    // Nick: It turns out that the insance of "account" is nil.
+    // This makes sense because it is not set before this line in any method
+    // To fix this, we had to add a way to get the bank account.
+    // Check the method 'prepareForSegue' in 'MobileAppAssignmentOneViewController.m'
+    
+    self.transactionTextView.text = @"";
+    for (NSString *transaction in self.account.transactionList) {
+        self.transactionTextView.text = [NSString stringWithFormat:@"%@%@\n",self.transactionTextView.text , transaction.description ];
+    }
 }
 
 - (void)didReceiveMemoryWarning

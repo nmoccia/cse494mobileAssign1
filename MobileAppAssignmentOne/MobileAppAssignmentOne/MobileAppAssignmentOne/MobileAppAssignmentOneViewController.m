@@ -7,6 +7,7 @@
 //
 
 #import "MobileAppAssignmentOneViewController.h"
+#import "TransactionViewController.h"
 
 
 @interface MobileAppAssignmentOneViewController ()
@@ -83,6 +84,24 @@
         NSLog(@"Error: text in field could not be resolved to a double");
     }
 
+}
+
+// Send the bank account to the next class
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    TransactionViewController *nextView = [segue destinationViewController];
+    nextView.account = self.account;
+    
+}
+
+# pragma mark - UITextFieldDelegate
+
+// Make the text field go away when return is pressed
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 
